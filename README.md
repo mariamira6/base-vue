@@ -1,29 +1,14 @@
-# basevue
+<h1>Proyecto de Bases de Programación</h1>
 
-This template should help get you started developing with Vue 3 in Vite.
+<p>¡Hola! 🤩</p>
+<p>En este proyecto se elegirán varios problemas relacionados con bases de programación y se resolverán devolviendo la respuesta correcta.</p>
 
-## Recommended IDE Setup
+<h2>Tecnologías:</h2>
 
-[VSCode](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur) + [TypeScript Vue Plugin (Volar)](https://marketplace.visualstudio.com/items?itemName=Vue.vscode-typescript-vue-plugin).
+<a href="https://vuejs.org/" target="_blank" rel="noreferrer"> <img align="center" src="https://raw.githubusercontent.com/devicons/devicon/master/icons/vuejs/vuejs-original-wordmark.svg" alt="vuejs" width="30" height="30"/> </a> 
 
-## Customize configuration
+<p>VueJS para desarrollar las distintas secciones de la web.</p>
 
-See [Vite Configuration Reference](https://vitejs.dev/config/).
+<a href="https://tailwindcss.com/" target="_blank" rel="noreferrer"> <img align="center" src="https://www.vectorlogo.zone/logos/tailwindcss/tailwindcss-icon.svg" alt="tailwind" width="30" height="30"/> </a>
 
-## Project Setup
-
-```sh
-npm install
-```
-
-### Compile and Hot-Reload for Development
-
-```sh
-npm run dev
-```
-
-### Compile and Minify for Production
-
-```sh
-npm run build
-```
+<p>TailwindCSS para aplicar los estilos.</p>
