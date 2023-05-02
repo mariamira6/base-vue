@@ -39,7 +39,10 @@ export default {
       $div.innerHTML = `<div class="flex flex-col justify-center items-center my-20 gap-6">
                         <p class="text-xl text-white font-bold">Introduce una cantidad de minutos (por ejemplo, 1578) y se transformarán en segundos.</p>
                         <input id="nums" type="text" placeholder="Introduce una cantidad" class="input input-bordered input-info w-full max-w-xs" />
+                        <div class="flex flex-row gap-2">
                         <button id="btn" class="bg-white text-black">Aceptar</button>
+                        <button id="reset" class="bg-white text-black">Vaciar página</button>
+                        </div>
                           </div>`
       $select.appendChild($div);
       const btnShow = document.querySelector("#btn");
@@ -47,7 +50,11 @@ export default {
         let minutos = nums.value;
         let segundos = nums.value * 60;
         respBack("¡Cantidad transformada!", `${minutos} minutos son ${segundos} segundos`, "success", "Aceptar")
-      })
+      });
+      const btnReset = document.querySelector("#reset");
+      btnReset.addEventListener("click", () => {
+        document.querySelector("#content").innerHTML = "";
+      }, false)
     },
 
     showWord() {
@@ -57,13 +64,20 @@ export default {
                         <p class="text-xl text-white font-bold">Introduce una palabra y te diré si es un palíndromo o no.</p>
                         <p class="text-lg text-gray-300 font-bold">Utiliza sólo minúsculas o sólo mayúsculas</p>
                         <input id="nums" type="text" placeholder="Introduce una palabra" class="input input-bordered input-info w-full max-w-xs" />
+                        <div class="flex flex-row gap-2">
                         <button id="btn" class="bg-white text-black">Aceptar</button>
+                        <button id="reset" class="bg-white text-black">Vaciar página</button>
+                        </div>
                           </div>`
       $select.appendChild($div);
       const btnShow = document.querySelector("#btn");
       btnShow.addEventListener("click", () => {
         this.pali2(nums.value);
-      })
+      });
+      const btnReset = document.querySelector("#reset");
+      btnReset.addEventListener("click", () => {
+        document.querySelector("#content").innerHTML = "";
+      }, false);
     },
 
     pali2(word) {
@@ -75,12 +89,10 @@ export default {
       if (word == reves) {
         respBack("¡Palíndromo!", `${word} es un palíndromo`, "success", "Aceptar")
         res = true;
-        return res;
-      }
-      if (word !== reves) {
+      } else {
         respBack("La palabra es muy molona pero...", `${word} no es un palíndromo`, "error", "Insertar otra palabra")
-        return res;
       }
+      return res;
     },
   }
 }
