@@ -1,5 +1,5 @@
 <template>
-  <body class="bg-[url('/./assets/img/text1.jpg')] w-full min-h-screen m-0 p-0">
+  <body class="bg-[url('/./assets/img/bg13.jpg')] bg-cover w-full min-h-screen m-0 p-0">
     <Breadcrumbs v-for="item in bc" :key="item" :name="item.name" :hover="item.hover" />
     <div class="flex justify-center items-center mt-5">
       <div class="dropdown dropdown-hover">
@@ -11,8 +11,6 @@
           <li><span class="hover:bg-sky-800">Número de teléfono</span></li>
         </ul>
       </div>
-      <button id="reset" @click="resetPage" class="btn bg-sky-500 text-white hover:bg-sky-800 m-1">Vaciar
-        página</button>
     </div>
     <div id="content"></div>
   </body>
@@ -20,10 +18,11 @@
 
 <script>
 import Breadcrumbs from "../components/Breadcrumbs.vue"
+import Dropdown from "../components/Dropdown.vue"
 import respBack from "../utils.js";
 export default {
   name: "Basics",
-  components: { Breadcrumbs },
+  components: { Breadcrumbs, Dropdown },
   data() {
     return {
       bc: [
@@ -32,11 +31,24 @@ export default {
           hover: "hover:text-blue-300"
         }
       ]
+      // exercises: [
+      //   {
+      //     first: "Palíndromos",
+      //     second: "Minutos-segundos",
+      //     third: "Número aleatorio",
+      //     fourth: "x",
+      //     clickFirst: "showWord",
+      //     clickSecond: "showSeconds",
+      //     clickThird: "showRandomNumber",
+      //     clickFourth: "showRandomNumber"
+      //   }
+      // ]
     }
   },
 
   methods: {
     showSeconds() {
+      this.resetPage();
       const $select = document.querySelector('#content');
       const $div = document.createElement('div');
       $div.innerHTML = `<div class="flex flex-col justify-center items-center my-20 gap-6">
@@ -59,6 +71,7 @@ export default {
     },
 
     showWord() {
+      this.resetPage();
       const $select = document.querySelector('#content');
 
       const $div = document.createElement('div');
@@ -81,6 +94,7 @@ export default {
     },
 
     showRandomNumber() {
+      this.resetPage();
       const $select = document.querySelector('#content');
       const $div = document.createElement('div');
       $div.innerHTML = `<div class="flex flex-col justify-center items-center my-20 gap-6">
@@ -142,10 +156,7 @@ export default {
     },
 
     resetPage() {
-      const btnReset = document.querySelector("#reset");
-      btnReset.addEventListener("click", () => {
-        document.querySelector("#content").innerHTML = "";
-      }, false);
+      document.querySelector("#content").innerHTML = "";
     }
   }
 }

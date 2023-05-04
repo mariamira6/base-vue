@@ -1,5 +1,5 @@
 <template>
-  <div class="bg-[url('/./assets/img/computer.jpg')] w-full min-h-screen bg-cover bg-bottom m-0 p-0">
+  <div class="bg-[url('/./assets/img/bg1.jpg')] w-full min-h-screen bg-cover bg-bottom m-0 p-0">
     <div class="flex justify-center items-center gap-20">
       <div class="card w-96 flex justify-center my-20">
         <figure><img src="/./assets/img/facil.png" alt="Nivel fácil" /></figure>
