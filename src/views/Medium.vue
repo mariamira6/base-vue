@@ -1,5 +1,5 @@
 <template>
-  <div class="bg-[url('/./assets/img/bg8.jpg')] w-full min-h-screen m-0 p-0">
+  <div class="bg-[url('/./assets/img/bg12.jpg')] w-full min-h-screen m-0 p-0">
     <Breadcrumbs v-for="item in bc" :key="item" :name="item.name" :hover="item.hover" />
     <Dropdown v-for="item in exercises" :key="item" :first="item.first" :second="item.second" :third="item.third"
       :fourth="item.fourth" />
