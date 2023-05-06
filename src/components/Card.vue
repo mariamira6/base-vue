@@ -4,7 +4,7 @@
     <div :class="property">
       <h2 class="card-title text-white">{{ name }}</h2>
       <div class="card-actions justify-center">
-        <router-link to="/basics"><button :class="btn">Ejercicios</button></router-link>
+        <router-link :to="url"><button :class="btn">Ejercicios</button></router-link>
       </div>
     </div>
   </div>
@@ -17,7 +17,8 @@ export default {
     name: { type: String },
     img: { type: String },
     property: { type: String },
-    btn: { type: String }
+    btn: { type: String },
+    url: { type: String }
   }
 }
 </script>
