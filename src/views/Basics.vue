@@ -20,11 +20,10 @@
 
 <script>
 import Breadcrumbs from "../components/Breadcrumbs.vue"
-import Dropdown from "../components/Dropdown.vue"
 import respBack from "../utils.js";
 export default {
   name: "Basics",
-  components: { Breadcrumbs, Dropdown },
+  components: { Breadcrumbs },
   data() {
     return {
       bc: [

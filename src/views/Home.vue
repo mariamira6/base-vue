@@ -17,14 +17,14 @@ export default {
       level: [
         {
           name: "Nivel básico",
-          img: "/./assets/img/facil.png",
+          img: "/./assets/img/sw1.jpg",
           property: "card-body justify-center items-center gap-4 bg-gradient-to-b from-blue-900 to-violet-400 rounded-b-xl",
           btn: "btn bg-blue-900 border-white hover:bg-violet-400 hover:border-black hover:text-black",
           url: "/basics"
         },
         {
           name: "Nivel intermedio",
-          img: "/./assets/img/medio.png",
+          img: "/./assets/img/homer.jpg",
           property: "card-body justify-center items-center gap-4 bg-gradient-to-b from-red-900 to-rose-400 rounded-b-xl",
           btn: "btn bg-red-900 border-white hover:bg-rose-400 hover:border-black hover:text-black",
           url: "/medium"
