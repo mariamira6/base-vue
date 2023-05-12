@@ -50,9 +50,13 @@ export default {
       $select.appendChild($div);
       const btnShow = document.querySelector("#btn");
       btnShow.addEventListener("click", () => {
-        let minutos = inp.value;
-        let segundos = inp.value * 60;
-        respBack("¡Cantidad transformada!", `${minutos} minutos son ${segundos} segundos`, "success", "Aceptar")
+        if (inp.value.trim() == "") {
+          respBack("Error", "El campo está vacío. Introduce los datos.", "error", "Aceptar")
+        } else {
+          let minutos = inp.value;
+          let segundos = inp.value * 60;
+          respBack("¡Cantidad transformada!", `${minutos} minutos son ${segundos} segundos`, "success", "Aceptar")
+        }
       });
 
       const input = document.querySelector('#inp');
@@ -75,7 +79,11 @@ export default {
       $select.appendChild($div);
       const btnShow = document.querySelector("#btn");
       btnShow.addEventListener("click", () => {
-        this.palinDromo(inp.value);
+        if (inp.value.trim() == "") {
+          respBack("Error", "El campo está vacío. Introduce los datos.", "error", "Aceptar")
+        } else {
+          this.palinDromo(inp.value);
+        }
       });
 
       const input = document.querySelector('#inp');
@@ -96,7 +104,11 @@ export default {
       $select.appendChild($div);
       const btnRevert = document.querySelector("#btn");
       btnRevert.addEventListener("click", () => {
-        this.randomNumber(inp.value);
+        if (inp.value.trim() == "") {
+          respBack("Error", "El campo está vacío. Introduce los datos.", "error", "Aceptar")
+        } else {
+          this.randomNumber(inp.value);
+        }
       });
 
       const input = document.querySelector('#inp');
@@ -118,12 +130,20 @@ export default {
       $select.appendChild($div);
       const btnC = document.querySelector("#celsius");
       btnC.addEventListener("click", () => {
-        this.toCelsius(inp.value)
+        if (inp.value.trim() == "") {
+          respBack("Error", "El campo está vacío. Introduce los datos.", "error", "Aceptar")
+        } else {
+          this.toCelsius(inp.value)
+        }
       });
 
       const btnF = document.querySelector("#fahrenheit")
       btnF.addEventListener("click", () => {
-        this.toFahrenheit(inp.value)
+        if (inp.value.trim() == "") {
+          respBack("Error", "El campo está vacío. Introduce los datos.", "error", "Aceptar")
+        } else {
+          this.toFahrenheit(inp.value)
+        }
       });
 
       const input = document.querySelector('#inp');
@@ -144,7 +164,11 @@ export default {
       $select.appendChild($div);
       const btnShow = document.querySelector("#btn");
       btnShow.addEventListener("click", () => {
-        this.returnNumbers(inp.value)
+        if (inp.value.trim() == "") {
+          respBack("Error", "El campo está vacío. Introduce los datos.", "error", "Aceptar")
+        } else {
+          this.returnNumbers(inp.value)
+        }
       });
     },
 
@@ -164,7 +188,11 @@ export default {
       $select.appendChild($div);
       const btnShow = document.querySelector("#btn");
       btnShow.addEventListener("click", () => {
-        this.letsCount(inp.value);
+        if (inp.value.trim() == "") {
+          respBack("Error", "El campo está vacío. Introduce los datos.", "error", "Aceptar")
+        } else {
+          this.letsCount(inp.value);
+        }
       });
 
       const input = document.querySelector('#inp');

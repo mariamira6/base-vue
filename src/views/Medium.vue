@@ -9,7 +9,7 @@
           <li><span @click="listNumbers" class="hover:bg-red-800">Números primos</span></li>
           <li><span class="hover:bg-red-800">?</span></li>
           <li><span class="hover:bg-red-800">?</span></li>
-          <li><span class="hover:bg-red-800">Base binaria</span></li>
+          <li><span @click="convertBase" class="hover:bg-red-800">Base binaria</span></li>
           <li><span @click="allLetters" class="hover:bg-red-800">Vocales-consonantes (Avanzado)</span></li>
         </ul>
       </div>
@@ -54,7 +54,11 @@ export default {
       $select.appendChild($div);
       const btnShow = document.querySelector("#btn");
       btnShow.addEventListener("click", () => {
-        this.throwDice(caras.value, dados.value);
+        if (caras.value.trim() == "" || dados.value.trim() == "") {
+          respBack("Error", "Hay algún campo vacío. Introduce los datos.", "error", "Aceptar")
+        } else {
+          this.throwDice(caras.value, dados.value);
+        }
       });
 
       const input = document.querySelector('#caras', '#dados');
@@ -77,7 +81,11 @@ export default {
       $select.appendChild($div);
       const btnShow = document.querySelector("#btn");
       btnShow.addEventListener("click", () => {
-        this.numLetters(inp.value);
+        if (inp.value.trim() == "") {
+          respBack("Error", "El campo está vacío. Introduce los datos.", "error", "Aceptar")
+        } else {
+          this.numLetters(inp.value);
+        }
       });
 
       const input = document.querySelector('#inp');
@@ -99,11 +107,50 @@ export default {
       $select.appendChild($div);
       const btnShow = document.querySelector("#btn");
       btnShow.addEventListener("click", () => {
-        this.numPrimos(inp.value);
+        if (inp.value.trim() == "") {
+          respBack("Error", "El campo está vacío. Introduce los datos.", "error", "Aceptar")
+        } else {
+          this.numPrimos(inp.value);
+        }
       });
 
       const input = document.querySelector('#inp');
       input.addEventListener("keydown", this.validarEntero);
+    },
+
+    convertBase() {
+      this.resetPage();
+      const $select = document.querySelector('#content');
+      const $div = document.createElement('div');
+      $div.innerHTML = `<div class="flex flex-col justify-center items-center my-20 gap-6">
+                        <p class="text-xl text-white font-bold">Introduce un número e indica si quieres convertirlo de base binaria a decimal o viceversa.</p>
+                        <input id="inp" type="text" placeholder="Introduce un número" class="input input-bordered input-info w-full max-w-xs" />
+                        <div class="flex flex-row gap-2">
+                        <button id="binaria" class="bg-sky-200 rounded-lg p-2 text-black">Convertir a Base Binaria</button>
+                        <button id="decimal" class="bg-sky-200 rounded-lg p-2 text-black">Convertir a Base Decimal</button>
+                        </div>
+                          </div>`
+      $select.appendChild($div);
+      const btnB = document.querySelector("#binaria");
+      btnB.addEventListener("click", () => {
+        if (inp.value.trim() == "") {
+          respBack("Error", "El campo está vacío. Introduce los datos.", "error", "Aceptar")
+        } else {
+          this.binToDec(inp.value); //cambiarlo
+        }
+      });
+
+      const btnD = document.querySelector("#decimal")
+      btnD.addEventListener("click", () => {
+        if (inp.value.trim() == "") {
+          respBack("Error", "El campo está vacío. Introduce los datos.", "error", "Aceptar")
+        } else {
+          this.binToDec(inp.value)
+        }
+      });
+
+      const input = document.querySelector('#inp');
+      input.addEventListener("keydown", this.validarNums);
     },
 
     numPrimos(num) {
@@ -163,6 +210,17 @@ export default {
       }
       respBack("Lanzando los dados...", `Tirada: ${tirada}`, "success", "Aceptar")
       return tirada;
+    },
+
+    binToDec(num) {
+      let number = num.toString();
+      number = (number.split(''));
+      let res = 0;
+      for (let i = 0; i < number.length; i++) {
+        res = res + (number[i] * (2 ** (number.length - i)))
+      }
+      respBack(`${num} en base decimal es...`, `${res} base 10`, "success", "Aceptar")
+      return res;
     },
 
     validarLetras(event) {
