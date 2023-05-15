@@ -7,8 +7,8 @@
         <ul tabindex="0" class="dropdown-content menu p-2 shadow bg-red-700 text-white rounded-box w-64">
           <li><span @click="takeDice" class="hover:bg-red-800">Dados</span></li>
           <li><span @click="listNumbers" class="hover:bg-red-800">Números primos</span></li>
-          <li><span class="hover:bg-red-800">?</span></li>
-          <li><span class="hover:bg-red-800">?</span></li>
+          <li><span class="hover:bg-red-800">Ordenar un vector</span></li>
+          <li><span class="hover:bg-red-800">Colores</span></li>
           <li><span @click="convertBase" class="hover:bg-red-800">Base binaria</span></li>
           <li><span @click="allLetters" class="hover:bg-red-800">Vocales-consonantes (Avanzado)</span></li>
         </ul>
@@ -57,7 +57,8 @@ export default {
         if (caras.value.trim() == "" || dados.value.trim() == "") {
           respBack("Error", "Hay algún campo vacío. Introduce los datos.", "error", "Aceptar")
         } else {
-          this.throwDice(caras.value, dados.value);
+          let res = this.throwDice(caras.value, dados.value);
+          respBack("Lanzando los dados...", `Tirada: ${res}`, "success", "Aceptar")
         }
       });
 
@@ -84,7 +85,8 @@ export default {
         if (inp.value.trim() == "") {
           respBack("Error", "El campo está vacío. Introduce los datos.", "error", "Aceptar")
         } else {
-          this.numLetters(inp.value);
+          let res = this.numLetters(inp.value);
+          respBack(`"${inp.value}" tiene...`, `Vocales: ${res.vocals}. Consonantes: ${res.consonants}.`, "success", "Aceptar")
         }
       });
 
@@ -110,7 +112,8 @@ export default {
         if (inp.value.trim() == "") {
           respBack("Error", "El campo está vacío. Introduce los datos.", "error", "Aceptar")
         } else {
-          this.numPrimos(inp.value);
+          let res = this.numPrimos(inp.value);
+          respBack(`Los ${inp.value} primeros números primos son:`, `${res}`, "success", "Aceptar")
         }
       });
 
@@ -136,7 +139,8 @@ export default {
         if (inp.value.trim() == "") {
           respBack("Error", "El campo está vacío. Introduce los datos.", "error", "Aceptar")
         } else {
-          this.binToDec(inp.value); //cambiarlo
+          let res = this.binToDec(inp.value); //cambiarlo
+          respBack(`${inp.value} en base binaria es...`, `${res} base 2`, "success", "Aceptar")
         }
       });
 
@@ -145,7 +149,8 @@ export default {
         if (inp.value.trim() == "") {
           respBack("Error", "El campo está vacío. Introduce los datos.", "error", "Aceptar")
         } else {
-          this.binToDec(inp.value)
+          let res = this.binToDec(inp.value)
+          respBack(`${inp.value} en base decimal es...`, `${res} base 10`, "success", "Aceptar")
         }
       });
 
@@ -169,7 +174,6 @@ export default {
         }
         number++;
       }
-      respBack(`Los ${num} primeros números primos son:`, `${primos}`, "success", "Aceptar")
       return primos;
     },
 
@@ -189,7 +193,6 @@ export default {
           vocals = vocals + 1;
         }
       }
-      respBack(`"${text}" tiene...`, `Vocales: ${vocals}. Consonantes: ${consonants}.`, "success", "Aceptar")
       return { vocals, consonants };
     },
     validarEntero(event) {
@@ -208,7 +211,6 @@ export default {
         let res = Math.floor(Math.random() * caras) + 1;
         tirada.push(res);
       }
-      respBack("Lanzando los dados...", `Tirada: ${tirada}`, "success", "Aceptar")
       return tirada;
     },
 
@@ -219,7 +221,6 @@ export default {
       for (let i = 0; i < number.length; i++) {
         res = res + (number[i] * (2 ** (number.length - i)))
       }
-      respBack(`${num} en base decimal es...`, `${res} base 10`, "success", "Aceptar")
       return res;
     },
 

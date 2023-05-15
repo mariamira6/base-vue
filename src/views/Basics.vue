@@ -77,12 +77,17 @@ export default {
                         </div>
                           </div>`
       $select.appendChild($div);
-      const btnShow = document.querySelector("#btn");
-      btnShow.addEventListener("click", () => {
+      const btnWord = document.querySelector("#btn");
+      btnWord.addEventListener("click", () => {
         if (inp.value.trim() == "") {
           respBack("Error", "El campo está vacío. Introduce los datos.", "error", "Aceptar")
         } else {
-          this.palinDromo(inp.value);
+          let res = this.palinDromo(inp.value);
+          if (res == true) {
+            respBack("¡Palíndromo!", `${inp.value} es un palíndromo`, "success", "Aceptar")
+          } else {
+            respBack("La palabra es muy molona pero...", `${inp.value} no es un palíndromo`, "error", "Insertar otra palabra")
+          }
         }
       });
 
@@ -107,7 +112,8 @@ export default {
         if (inp.value.trim() == "") {
           respBack("Error", "El campo está vacío. Introduce los datos.", "error", "Aceptar")
         } else {
-          this.randomNumber(inp.value);
+          let res = this.randomNumber(inp.value);
+          respBack("Y el número es...", `¡¡${res}!!`, "success", "Probar otra vez")
         }
       });
 
@@ -133,7 +139,8 @@ export default {
         if (inp.value.trim() == "") {
           respBack("Error", "El campo está vacío. Introduce los datos.", "error", "Aceptar")
         } else {
-          this.toCelsius(inp.value)
+          let res = this.toCelsius(inp.value);
+          respBack("¡Temperatura transformada!", `${inp.value} ºF = ${res}`, "success", "Aceptar")
         }
       });
 
@@ -142,7 +149,8 @@ export default {
         if (inp.value.trim() == "") {
           respBack("Error", "El campo está vacío. Introduce los datos.", "error", "Aceptar")
         } else {
-          this.toFahrenheit(inp.value)
+          let res = this.toFahrenheit(inp.value)
+          respBack("¡Temperatura transformada!", `${inp.value} ºC = ${res}`, "success", "Aceptar")
         }
       });
 
@@ -162,12 +170,13 @@ export default {
                         </div>
                           </div>`
       $select.appendChild($div);
-      const btnShow = document.querySelector("#btn");
-      btnShow.addEventListener("click", () => {
+      const btnNum = document.querySelector("#btn");
+      btnNum.addEventListener("click", () => {
         if (inp.value.trim() == "") {
           respBack("Error", "El campo está vacío. Introduce los datos.", "error", "Aceptar")
         } else {
-          this.returnNumbers(inp.value)
+          let res = this.returnNumbers(inp.value);
+          respBack(`Has introducido ${inp.value} y...`, `¡Tachán! ${res.min} es el número más pequeño y ${res.max} el más grande`, "success", "Aceptar")
         }
       });
     },
@@ -186,12 +195,13 @@ export default {
                         </div>
                           </div>`
       $select.appendChild($div);
-      const btnShow = document.querySelector("#btn");
-      btnShow.addEventListener("click", () => {
+      const btnLetters = document.querySelector("#btn");
+      btnLetters.addEventListener("click", () => {
         if (inp.value.trim() == "") {
           respBack("Error", "El campo está vacío. Introduce los datos.", "error", "Aceptar")
         } else {
-          this.letsCount(inp.value);
+          let res = this.letsCount(inp.value);
+          respBack(`"${inp.value}" tiene...`, `Vocales: ${res.vocals}. Consonantes: ${res.consonants}.`, "success", "Aceptar")
         }
       });
 
@@ -206,29 +216,23 @@ export default {
         reves = reves + word[i];
       }
       if (word == reves) {
-        respBack("¡Palíndromo!", `${word} es un palíndromo`, "success", "Aceptar")
         res = true;
-      } else {
-        respBack("La palabra es muy molona pero...", `${word} no es un palíndromo`, "error", "Insertar otra palabra")
       }
       return res;
     },
 
     randomNumber(number) {
       let res = Math.floor(Math.random() * number + 1);
-      respBack("Y el número es...", `¡¡${res}!!`, "success", "Probar otra vez")
       return res;
     },
 
     toFahrenheit(num) {
       let finalTemp = (num * 9 / 5) + 32 + "ºF";
-      respBack("¡Temperatura transformada!", `${num} ºC = ${finalTemp}`, "success", "Aceptar")
       return finalTemp;
     },
 
     toCelsius(num) {
       let finalTemp = (num - 32) * 5 / 9 + "ºC";
-      respBack("¡Temperatura transformada!", `${num} ºF = ${finalTemp}`, "success", "Aceptar")
       return finalTemp;
     },
 
@@ -244,7 +248,6 @@ export default {
           min = numFinal[i];
         }
       }
-      respBack(`Has introducido ${num} y...`, `¡Tachán! ${min} es el número más pequeño y ${max} el más grande`, "success", "Aceptar")
       return { max, min };
     },
 
@@ -261,7 +264,6 @@ export default {
           }
         }
       }
-      respBack(`"${phrase}" tiene...`, `Vocales: ${vocals}. Consonantes: ${consonants}.`, "success", "Aceptar")
       return { vocals, consonants }
     },
 
