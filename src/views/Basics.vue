@@ -233,7 +233,7 @@ export default {
     },
 
     returnNumbers(num) {
-      let numFinal = num.split(",").map(n => n.trim());
+      let numFinal = num.split(",").map(Number);
       let max = numFinal[0];
       let min = numFinal[0];
       for (let i = 0; i < numFinal.length; i++) {
