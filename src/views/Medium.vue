@@ -7,7 +7,7 @@
         <ul tabindex="0" class="dropdown-content menu p-2 shadow bg-red-700 text-white rounded-box w-64">
           <li><span @click="takeDice" class="hover:bg-red-800">Dados</span></li>
           <li><span @click="listNumbers" class="hover:bg-red-800">Números primos</span></li>
-          <li><span class="hover:bg-red-800">Ordenar un vector</span></li>
+          <li><span @click="orderNums" class="hover:bg-red-800">Ordenar un vector</span></li>
           <li><span class="hover:bg-red-800">Colores</span></li>
           <li><span @click="convertBase" class="hover:bg-red-800">Base binaria</span></li>
           <li><span @click="allLetters" class="hover:bg-red-800">Vocales-consonantes (Avanzado)</span></li>
@@ -121,6 +121,32 @@ export default {
       input.addEventListener("keydown", this.validarEntero);
     },
 
+    orderNums() {
+      this.resetPage();
+      const $select = document.querySelector('#content');
+
+      const $div = document.createElement('div');
+      $div.innerHTML = `<div class="flex flex-col justify-center items-center my-20 gap-6">
+                        <p class="text-xl text-white font-bold">Introduce una serie de números para ordenarlos de menor a mayor.</p>
+                        <p class="text-lg text-white font-bold">Ejemplo: 3, 124, -34, 67, 4.</p>
+                        <input id="inp" type="text" placeholder="Introduce varios números separados por comas." class="input input-bordered border-red-500 input-info w-full max-w-xs" />
+                        <button id="btn" class="bg-red-300 rounded-lg p-2 text-black">Aceptar</button>
+                        </div>
+                          </div>`
+      $select.appendChild($div);
+      const btnOrd = document.querySelector("#btn");
+      btnOrd.addEventListener("click", () => {
+        if (inp.value.trim() == "") {
+          respBack("Error", "El campo está vacío. Introduce los datos.", "error", "Aceptar")
+        } else {
+          let res = this.putFirst(inp.value);
+          respBack(`Ordenando los números ${inp.value}...`, `${res}`, "success", "Aceptar")
+        }
+      });
+
+
+    },
+
     convertBase() {
       this.resetPage();
       const $select = document.querySelector('#content');
@@ -222,6 +248,21 @@ export default {
         res = res + (number[i] * (2 ** (number.length - i)))
       }
       return res;
+    },
+
+    putFirst(numbers) {
+      let splitNumbers = numbers.split(",").map(Number);
+      for (let i = 0; i < splitNumbers.length; i++) {
+        for (let j = 0; j < splitNumbers.length - 1; j++) {
+          if (splitNumbers[j] > splitNumbers[j + 1]) {
+            let aux = splitNumbers[j];
+            splitNumbers[j] = splitNumbers[j + 1];
+            splitNumbers[j + 1] = aux;
+          }
+        }
+
+      }
+      return splitNumbers
     },
 
     validarLetras(event) {
