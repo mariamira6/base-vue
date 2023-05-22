@@ -135,7 +135,7 @@ export default {
         if (inp.value.trim() == "") {
           respBack("Error", "El campo está vacío. Introduce los datos.", "error", "Aceptar", "#7d121261", "#840d0d")
         } else {
-          let res = this.binToDec(inp.value); //cambiarlo
+          let res = this.decToBin(inp.value, 2);
           respBack(`${inp.value} en base binaria es...`, `${res} base 2`, "success", "Aceptar", "#7d121261", "#840d0d")
         }
       });
@@ -145,7 +145,7 @@ export default {
         if (inp.value.trim() == "") {
           respBack("Error", "El campo está vacío. Introduce los datos.", "error", "Aceptar", "#7d121261", "#840d0d")
         } else {
-          let res = this.binToDec(inp.value)
+          let res = this.binToDec(inp.value, 2)
           respBack(`${inp.value} en base decimal es...`, `${res} base 10`, "success", "Aceptar", "#7d121261", "#840d0d")
         }
       });
@@ -200,6 +200,18 @@ export default {
         res = res + (number[i] * (base ** ((number.length - 1) - i)))
       }
       return res;
+    },
+
+    decToBin(num, base) {
+      let res = [];
+      while (num > base) {
+        res.push(Math.floor(num % base));
+        num = num / base;
+      }
+      res.push(Math.floor(num));
+      console.log(res);
+      res.reverse()
+      return res.join('');
     },
 
     putFirst(numbers) {
