@@ -10,7 +10,7 @@
           <li><span @click="orderNums" class="hover:bg-red-800">Ordenar un vector</span></li>
           <li><span class="hover:bg-red-800">Colores</span></li>
           <li><span @click="convertBase" class="hover:bg-red-800">Base binaria</span></li>
-          <li><span @click="allLetters" class="hover:bg-red-800">Vocales-consonantes (Avanzado)</span></li>
+          <li><span class="hover:bg-red-800">Vocales-consonantes</span></li>
         </ul>
       </div>
     </div>
@@ -55,43 +55,15 @@ export default {
       const btnShow = document.querySelector("#btn");
       btnShow.addEventListener("click", () => {
         if (caras.value.trim() == "" || dados.value.trim() == "") {
-          respBack("Error", "Hay algún campo vacío. Introduce los datos.", "error", "Aceptar")
+          respBack("Error", "Hay algún campo vacío. Introduce los datos.", "error", "Aceptar", "#7d121261", "#840d0d")
         } else {
           let res = this.throwDice(caras.value, dados.value);
-          respBack("Lanzando los dados...", `Tirada: ${res}`, "success", "Aceptar")
+          respBack("Lanzando los dados...", `Tirada: ${res}`, "success", "Aceptar", "#7d121261", "#840d0d")
         }
       });
 
       const input = document.querySelector('#caras', '#dados');
       input.addEventListener("keydown", this.validarEntero);
-    },
-
-    allLetters() {
-      this.resetPage();
-      const $select = document.querySelector('#content');
-
-      const $div = document.createElement('div');
-      $div.innerHTML = `<div class="flex flex-col justify-center items-center my-20 gap-6">
-                        <p class="text-xl text-white font-bold">Introduce una palabra o frase para saber cuántas vocales y consonantes tiene.</p>
-                        <p class="text-lg text-white font-bold">Puedes utilizar todos los caracteres, incluidos los especiales.</p>
-                        <input id="inp" type="text" placeholder="Introduce una palabra o frase" class="input input-bordered border-red-500 input-info w-full max-w-xs" />
-                        <div class="flex flex-row gap-2">
-                        <button id="btn" class="bg-red-300 rounded-lg p-2 text-black">Aceptar</button>
-                        </div>
-                          </div>`
-      $select.appendChild($div);
-      const btnShow = document.querySelector("#btn");
-      btnShow.addEventListener("click", () => {
-        if (inp.value.trim() == "") {
-          respBack("Error", "El campo está vacío. Introduce los datos.", "error", "Aceptar")
-        } else {
-          let res = this.numLetters(inp.value);
-          respBack(`"${inp.value}" tiene...`, `Vocales: ${res.vocals}. Consonantes: ${res.consonants}.`, "success", "Aceptar")
-        }
-      });
-
-      const input = document.querySelector('#inp');
-      input.addEventListener("keydown", this.validarLetras);
     },
 
     listNumbers() {
@@ -110,10 +82,10 @@ export default {
       const btnShow = document.querySelector("#btn");
       btnShow.addEventListener("click", () => {
         if (inp.value.trim() == "") {
-          respBack("Error", "El campo está vacío. Introduce los datos.", "error", "Aceptar")
+          respBack("Error", "El campo está vacío. Introduce los datos.", "error", "Aceptar", "#7d121261", "#840d0d")
         } else {
           let res = this.numPrimos(inp.value);
-          respBack(`Los ${inp.value} primeros números primos son:`, `${res}`, "success", "Aceptar")
+          respBack(`Los ${inp.value} primeros números primos son:`, `${res}`, "success", "Aceptar", "#7d121261", "#840d0d")
         }
       });
 
@@ -137,14 +109,12 @@ export default {
       const btnOrd = document.querySelector("#btn");
       btnOrd.addEventListener("click", () => {
         if (inp.value.trim() == "") {
-          respBack("Error", "El campo está vacío. Introduce los datos.", "error", "Aceptar")
+          respBack("Error", "El campo está vacío. Introduce los datos.", "error", "Aceptar", "#7d121261", "#840d0d")
         } else {
           let res = this.putFirst(inp.value);
-          respBack(`Ordenando los números ${inp.value}...`, `${res}`, "success", "Aceptar")
+          respBack(`Ordenando los números ${inp.value}...`, `${res}`, "success", "Aceptar", "#7d121261", "#840d0d")
         }
       });
-
-
     },
 
     convertBase() {
@@ -163,20 +133,20 @@ export default {
       const btnB = document.querySelector("#binaria");
       btnB.addEventListener("click", () => {
         if (inp.value.trim() == "") {
-          respBack("Error", "El campo está vacío. Introduce los datos.", "error", "Aceptar")
+          respBack("Error", "El campo está vacío. Introduce los datos.", "error", "Aceptar", "#7d121261", "#840d0d")
         } else {
           let res = this.binToDec(inp.value); //cambiarlo
-          respBack(`${inp.value} en base binaria es...`, `${res} base 2`, "success", "Aceptar")
+          respBack(`${inp.value} en base binaria es...`, `${res} base 2`, "success", "Aceptar", "#7d121261", "#840d0d")
         }
       });
 
       const btnD = document.querySelector("#decimal")
       btnD.addEventListener("click", () => {
         if (inp.value.trim() == "") {
-          respBack("Error", "El campo está vacío. Introduce los datos.", "error", "Aceptar")
+          respBack("Error", "El campo está vacío. Introduce los datos.", "error", "Aceptar", "#7d121261", "#840d0d")
         } else {
           let res = this.binToDec(inp.value)
-          respBack(`${inp.value} en base decimal es...`, `${res} base 10`, "success", "Aceptar")
+          respBack(`${inp.value} en base decimal es...`, `${res} base 10`, "success", "Aceptar", "#7d121261", "#840d0d")
         }
       });
 
@@ -203,24 +173,6 @@ export default {
       return primos;
     },
 
-    numLetters(text) {
-      let aux = text.toLowerCase();
-      let vocals = 0;
-      let consonants = 0;
-      for (let i = 0; i < aux.length; i++) {
-        if (aux[i] >= "a" && aux[i] <= "z") {
-          if (aux[i] == "a" || aux[i] == "e" || aux[i] == "i" || aux[i] == "o" || aux[i] == "u") {
-            vocals = vocals + 1;
-          } else {
-            consonants = consonants + 1;
-          }
-        }
-        if (aux[i] == "á" || aux[i] == "é" || aux[i] == "í" || aux[i] == "ó" || aux[i] == "ú") {
-          vocals = vocals + 1;
-        }
-      }
-      return { vocals, consonants };
-    },
     validarEntero(event) {
       const teclaPresionada = event.key;
       const esNumero = /^[0-9]$/.test(teclaPresionada);
@@ -240,12 +192,12 @@ export default {
       return tirada;
     },
 
-    binToDec(num) {
+    binToDec(num, base) {
       let number = num.toString();
       number = (number.split(''));
       let res = 0;
-      for (let i = 0; i < number.length; i++) {
-        res = res + (number[i] * (2 ** (number.length - i)))
+      for (let i = number.length - 1; i >= 0; i--) {
+        res = res + (number[i] * (base ** ((number.length - 1) - i)))
       }
       return res;
     },

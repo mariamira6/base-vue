@@ -10,7 +10,7 @@
           <li><span @click="showRandomNumber" class="hover:bg-sky-800">Número aleatorio</span></li>
           <li><span @click="convertTemp" class="hover:bg-sky-800">Convertir temperatura</span></li>
           <li><span @click="showNumbers" class="hover:bg-sky-800">Mayor-menor</span></li>
-          <li><span @click="howMany" class="hover:bg-sky-800">Vocales-consonantes (Básico)</span></li>
+          <li><span @click="howMany" class="hover:bg-sky-800">Vocales-consonantes</span></li>
         </ul>
       </div>
     </div>
@@ -42,7 +42,7 @@ export default {
       const $div = document.createElement('div');
       $div.innerHTML = `<div class="flex flex-col justify-center items-center my-20 gap-6">
                         <p class="text-xl text-white font-bold">Introduce una cantidad de minutos (por ejemplo, 1578) y se transformarán en segundos.</p>
-                        <input id="inp" type="text" placeholder="Introduce una cantidad" class="input input-bordered input-info w-full max-w-xs" />
+                        <input id="inp" type="text" placeholder="Introduce una cantidad" class="input input-bordered input-info w-52 max-w-xs" />
                         <div class="flex flex-row gap-2">
                         <button id="btn" class="bg-sky-200 rounded-lg p-2 text-black">Aceptar</button>
                         </div>
@@ -51,11 +51,11 @@ export default {
       const btnShow = document.querySelector("#btn");
       btnShow.addEventListener("click", () => {
         if (inp.value.trim() == "") {
-          respBack("Error", "El campo está vacío. Introduce los datos.", "error", "Aceptar")
+          respBack("Error", "El campo está vacío. Introduce los datos.", "error", "Aceptar", "#546df758", "#4669f6")
         } else {
           let minutos = inp.value;
           let segundos = inp.value * 60;
-          respBack("¡Cantidad transformada!", `${minutos} minutos son ${segundos} segundos`, "success", "Aceptar")
+          respBack("¡Cantidad transformada!", `${minutos} minutos son ${segundos} segundos`, "success", "Aceptar", "#546df758", "#4669f6")
         }
       });
 
@@ -71,7 +71,7 @@ export default {
       $div.innerHTML = `<div class="flex flex-col justify-center items-center my-20 gap-6">
                         <p class="text-xl text-white font-bold">Introduce una palabra y te diré si es un palíndromo o no.</p>
                         <p class="text-lg text-white font-bold">Utiliza sólo minúsculas o sólo mayúsculas</p>
-                        <input id="inp" type="text" placeholder="Introduce una palabra" class="input input-bordered input-info w-full max-w-xs" />
+                        <input id="inp" type="text" placeholder="Introduce una palabra" class="input input-bordered input-info w-64 max-w-xs" />
                         <div class="flex flex-row gap-2">
                         <button id="btn" class="bg-sky-200 rounded-lg p-2 text-black">Aceptar</button>
                         </div>
@@ -80,13 +80,13 @@ export default {
       const btnWord = document.querySelector("#btn");
       btnWord.addEventListener("click", () => {
         if (inp.value.trim() == "") {
-          respBack("Error", "El campo está vacío. Introduce los datos.", "error", "Aceptar")
+          respBack("Error", "El campo está vacío. Introduce los datos.", "error", "Aceptar", "#546df758", "#4669f6")
         } else {
           let res = this.palinDromo(inp.value);
           if (res == true) {
-            respBack("¡Palíndromo!", `${inp.value} es un palíndromo`, "success", "Aceptar")
+            respBack("¡Palíndromo!", `${inp.value} es un palíndromo`, "success", "Aceptar", "#546df758", "#4669f6")
           } else {
-            respBack("La palabra es muy molona pero...", `${inp.value} no es un palíndromo`, "error", "Insertar otra palabra")
+            respBack("La palabra es muy molona pero...", `${inp.value} no es un palíndromo`, "error", "Insertar otra palabra", "#546df758", "#4669f6")
           }
         }
       });
@@ -101,7 +101,7 @@ export default {
       const $div = document.createElement('div');
       $div.innerHTML = `<div class="flex flex-col justify-center items-center my-20 gap-6">
                         <p class="text-xl text-white font-bold">Introduce un número y te daré otro aleatorio entre 1 y tu número elegido.</p>
-                        <input id="inp" type="text" placeholder="Introduce un número" class="input input-bordered input-info w-full max-w-xs" />
+                        <input id="inp" type="text" placeholder="Introduce un número" class="input input-bordered input-info w-48 max-w-xs" />
                         <div class="flex flex-row gap-2">
                         <button id="btn" class="bg-sky-200 rounded-lg p-2 text-black">Aceptar</button>
                         </div>
@@ -110,10 +110,10 @@ export default {
       const btnRevert = document.querySelector("#btn");
       btnRevert.addEventListener("click", () => {
         if (inp.value.trim() == "") {
-          respBack("Error", "El campo está vacío. Introduce los datos.", "error", "Aceptar")
+          respBack("Error", "El campo está vacío. Introduce los datos.", "error", "Aceptar", "#546df758", "#4669f6")
         } else {
           let res = this.randomNumber(inp.value);
-          respBack("Y el número es...", `¡¡${res}!!`, "success", "Probar otra vez")
+          respBack("Y el número es...", `¡¡${res}!!`, "success", "Probar otra vez", "#546df758", "#4669f6")
         }
       });
 
@@ -127,7 +127,7 @@ export default {
       const $div = document.createElement('div');
       $div.innerHTML = `<div class="flex flex-col justify-center items-center my-20 gap-6">
                         <p class="text-xl text-white font-bold">Introduce un número e indica si quieres transformarlo de ºC  a Fahrenheit o viceversa.</p>
-                        <input id="inp" type="text" placeholder="Introduce un número" class="input input-bordered input-info w-full max-w-xs" />
+                        <input id="inp" type="text" placeholder="Introduce un número" class="input input-bordered input-info w-48 max-w-xs" />
                         <div class="flex flex-row gap-2">
                         <button id="celsius" class="bg-sky-200 rounded-lg p-2 text-black">Transformar a ºC</button>
                         <button id="fahrenheit" class="bg-sky-200 rounded-lg p-2 text-black">Transformar a ºF</button>
@@ -137,20 +137,20 @@ export default {
       const btnC = document.querySelector("#celsius");
       btnC.addEventListener("click", () => {
         if (inp.value.trim() == "") {
-          respBack("Error", "El campo está vacío. Introduce los datos.", "error", "Aceptar")
+          respBack("Error", "El campo está vacío. Introduce los datos.", "error", "Aceptar", "#546df758", "#4669f6")
         } else {
           let res = this.toCelsius(inp.value);
-          respBack("¡Temperatura transformada!", `${inp.value} ºF = ${res}`, "success", "Aceptar")
+          respBack("¡Temperatura transformada!", `${inp.value} ºF = ${res}`, "success", "Aceptar", "#546df758", "#4669f6")
         }
       });
 
       const btnF = document.querySelector("#fahrenheit")
       btnF.addEventListener("click", () => {
         if (inp.value.trim() == "") {
-          respBack("Error", "El campo está vacío. Introduce los datos.", "error", "Aceptar")
+          respBack("Error", "El campo está vacío. Introduce los datos.", "error", "Aceptar", "#546df758", "#4669f6")
         } else {
           let res = this.toFahrenheit(inp.value)
-          respBack("¡Temperatura transformada!", `${inp.value} ºC = ${res}`, "success", "Aceptar")
+          respBack("¡Temperatura transformada!", `${inp.value} ºC = ${res}`, "success", "Aceptar", "#546df758", "#4669f6")
         }
       });
 
@@ -173,10 +173,10 @@ export default {
       const btnNum = document.querySelector("#btn");
       btnNum.addEventListener("click", () => {
         if (inp.value.trim() == "") {
-          respBack("Error", "El campo está vacío. Introduce los datos.", "error", "Aceptar")
+          respBack("Error", "El campo está vacío. Introduce los datos.", "error", "Aceptar", "#546df758", "#4669f6")
         } else {
           let res = this.returnNumbers(inp.value);
-          respBack(`Has introducido ${inp.value} y...`, `¡Tachán! ${res.min} es el número más pequeño y ${res.max} el más grande`, "success", "Aceptar")
+          respBack(`Has introducido ${inp.value} y...`, `¡Tachán! ${res.min} es el número más pequeño y ${res.max} el más grande`, "success", "Aceptar", "#546df758", "#4669f6")
         }
       });
     },
@@ -188,20 +188,20 @@ export default {
       const $div = document.createElement('div');
       $div.innerHTML = `<div class="flex flex-col justify-center items-center my-20 gap-6">
                         <p class="text-xl text-white font-bold">Introduce una palabra o frase para saber cuántas vocales y consonantes tiene.</p>
-                        <p class="text-lg text-white font-bold">Utiliza sólo letras sin caracteres especiales (tildes, signos, etc.)</p>
-                        <input id="inp" type="text" placeholder="Introduce una palabra" class="input input-bordered input-info w-full max-w-xs" />
+                        <p class="text-lg text-white font-bold">Puedes utilizar todos los caracteres, incluidos los especiales.</p>
+                        <input id="inp" type="text" placeholder="Introduce una palabra o frase" class="input input-bordered input-info w-full max-w-xs" />
                         <div class="flex flex-row gap-2">
                         <button id="btn" class="bg-sky-200 rounded-lg p-2 text-black">Aceptar</button>
                         </div>
                           </div>`
       $select.appendChild($div);
-      const btnLetters = document.querySelector("#btn");
-      btnLetters.addEventListener("click", () => {
+      const btnShow = document.querySelector("#btn");
+      btnShow.addEventListener("click", () => {
         if (inp.value.trim() == "") {
-          respBack("Error", "El campo está vacío. Introduce los datos.", "error", "Aceptar")
+          respBack("Error", "El campo está vacío. Introduce los datos.", "error", "Aceptar", "#546df758", "#4669f6")
         } else {
-          let res = this.letsCount(inp.value);
-          respBack(`"${inp.value}" tiene...`, `Vocales: ${res.vocals}. Consonantes: ${res.consonants}.`, "success", "Aceptar")
+          let res = this.countLetters(inp.value);
+          respBack(`"${inp.value}" tiene...`, `Vocales: ${res.vocals}. Consonantes: ${res.consonants}.`, "success", "Aceptar", "#546df758", "#4669f6")
         }
       });
 
@@ -251,17 +251,20 @@ export default {
       return { max, min };
     },
 
-    letsCount(phrase) {
-      let aux = phrase.toLowerCase();
+    countLetters(text) {
+      let aux = text.toLowerCase();
       let vocals = 0;
       let consonants = 0;
-      for (let j = 0; j < aux.length; j++) {
-        if (aux[j] == "a" || aux[j] == "e" || aux[j] == "i" || aux[j] == "o" || aux[j] == "u") {
-          vocals = vocals + 1;
-        } else {
-          if (aux[j] !== " ") {
+      for (let i = 0; i < aux.length; i++) {
+        if (aux[i] >= "a" && aux[i] <= "z") {
+          if (aux[i] == "a" || aux[i] == "e" || aux[i] == "i" || aux[i] == "o" || aux[i] == "u") {
+            vocals = vocals + 1;
+          } else {
             consonants = consonants + 1;
           }
+        }
+        if (aux[i] == "á" || aux[i] == "é" || aux[i] == "í" || aux[i] == "ó" || aux[i] == "ú") {
+          vocals = vocals + 1;
         }
       }
       return { vocals, consonants }
