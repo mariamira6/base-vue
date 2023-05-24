@@ -8,7 +8,7 @@ export default function respBack(title, text, icon, btn, backdrop, color) {
     confirmButtonText: btn,
     confirmButtonColor: color,
     width: 600,
-    padding: '3em',
+    padding: '1em',
     color: '#000',
     background: '#ffffff',
     backdrop: backdrop

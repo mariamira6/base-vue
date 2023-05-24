@@ -3,7 +3,8 @@
     <Breadcrumbs v-for="item in bc" :key="item" :name="item.name" :hover="item.hover" />
     <div class="flex justify-center items-center mt-5">
       <div class="dropdown dropdown-hover">
-        <label tabindex="0" class="btn bg-sky-500 text-white hover:bg-sky-800 m-1">Elige uno de los ejercicios</label>
+        <label tabindex="0" class="btn bg-sky-500 text-white hover:bg-sky-800 m-1">Elige uno de los
+          ejercicios</label>
         <ul tabindex="0" class="dropdown-content menu p-2 shadow bg-sky-500 text-white rounded-box w-64">
           <li><span @click="showWord" class="hover:bg-sky-800">Palíndromos</span></li>
           <li><span @click="showSeconds" class="hover:bg-sky-800">Minutos-segundos</span></li>
@@ -40,11 +41,11 @@ export default {
       this.resetPage();
       const $select = document.querySelector('#content');
       const $div = document.createElement('div');
-      $div.innerHTML = `<div class="flex flex-col justify-center items-center my-20 gap-6">
+      $div.innerHTML = `<div class="flex flex-col justify-center items-center my-20 gap-6 animate-fade duration-1000 animate-ease-linear">
                         <p class="text-xl text-white font-bold">Introduce una cantidad de minutos (por ejemplo, 1578) y se transformarán en segundos.</p>
                         <input id="inp" type="text" placeholder="Introduce una cantidad" class="input input-bordered input-info w-52 max-w-xs" />
                         <div class="flex flex-row gap-2">
-                        <button id="btn" class="bg-sky-200 rounded-lg p-2 text-black">Aceptar</button>
+                        <button id="btn" class="bg-sky-200 rounded-lg p-2 text-black hover:animate-jump">Aceptar</button>
                         </div>
                           </div>`
       $select.appendChild($div);
@@ -68,12 +69,12 @@ export default {
       const $select = document.querySelector('#content');
 
       const $div = document.createElement('div');
-      $div.innerHTML = `<div class="flex flex-col justify-center items-center my-20 gap-6">
+      $div.innerHTML = `<div class="flex flex-col justify-center items-center my-20 gap-6 animate-fade duration-1000 animate-ease-linear">
                         <p class="text-xl text-white font-bold">Introduce una palabra y te diré si es un palíndromo o no.</p>
-                        <p class="text-lg text-white font-bold">Utiliza sólo minúsculas o sólo mayúsculas</p>
+                        <p class="text-lg text-white font-bold">Por ejemplo: Kayak, Oro, Pop, Radar, etc. </p>
                         <input id="inp" type="text" placeholder="Introduce una palabra" class="input input-bordered input-info w-64 max-w-xs" />
                         <div class="flex flex-row gap-2">
-                        <button id="btn" class="bg-sky-200 rounded-lg p-2 text-black">Aceptar</button>
+                        <button id="btn" class="bg-sky-200 rounded-lg p-2 text-black hover:animate-jump">Aceptar</button>
                         </div>
                           </div>`
       $select.appendChild($div);
@@ -99,11 +100,11 @@ export default {
       this.resetPage();
       const $select = document.querySelector('#content');
       const $div = document.createElement('div');
-      $div.innerHTML = `<div class="flex flex-col justify-center items-center my-20 gap-6">
+      $div.innerHTML = `<div class="flex flex-col justify-center items-center my-20 gap-6 animate-fade duration-1000 animate-ease-linear">
                         <p class="text-xl text-white font-bold">Introduce un número y te daré otro aleatorio entre 1 y tu número elegido.</p>
                         <input id="inp" type="text" placeholder="Introduce un número" class="input input-bordered input-info w-48 max-w-xs" />
                         <div class="flex flex-row gap-2">
-                        <button id="btn" class="bg-sky-200 rounded-lg p-2 text-black">Aceptar</button>
+                        <button id="btn" class="bg-sky-200 rounded-lg p-2 text-black hover:animate-jump">Aceptar</button>
                         </div>
                           </div>`
       $select.appendChild($div);
@@ -125,12 +126,12 @@ export default {
       this.resetPage();
       const $select = document.querySelector('#content');
       const $div = document.createElement('div');
-      $div.innerHTML = `<div class="flex flex-col justify-center items-center my-20 gap-6">
+      $div.innerHTML = `<div class="flex flex-col justify-center items-center my-20 gap-6 animate-fade duration-1000 animate-ease-linear">
                         <p class="text-xl text-white font-bold">Introduce un número e indica si quieres transformarlo de ºC  a Fahrenheit o viceversa.</p>
                         <input id="inp" type="text" placeholder="Introduce un número" class="input input-bordered input-info w-48 max-w-xs" />
                         <div class="flex flex-row gap-2">
-                        <button id="celsius" class="bg-sky-200 rounded-lg p-2 text-black">Transformar a ºC</button>
-                        <button id="fahrenheit" class="bg-sky-200 rounded-lg p-2 text-black">Transformar a ºF</button>
+                        <button id="celsius" class="bg-sky-200 rounded-lg p-2 text-black hover:animate-jump">Transformar a ºC</button>
+                        <button id="fahrenheit" class="bg-sky-200 rounded-lg p-2 text-black hover:animate-jump">Transformar a ºF</button>
                         </div>
                           </div>`
       $select.appendChild($div);
@@ -162,11 +163,11 @@ export default {
       this.resetPage();
       const $select = document.querySelector('#content');
       const $div = document.createElement('div');
-      $div.innerHTML = `<div class="flex flex-col justify-center items-center my-20 gap-6">
+      $div.innerHTML = `<div class="flex flex-col justify-center items-center my-20 gap-6 animate-fade duration-1000 animate-ease-linear">
                         <p class="text-xl text-white font-bold">Introduce una serie de números y te diré cuál es el menor y el mayor.</p>
                         <input id="inp" type="text" placeholder="Introduce una serie de números" class="input input-bordered input-info w-full max-w-xs" />
                         <div class="flex flex-row gap-2">
-                        <button id="btn" class="bg-sky-200 rounded-lg p-2 text-black">Aceptar</button>
+                        <button id="btn" class="bg-sky-200 rounded-lg p-2 text-black hover:animate-jump">Aceptar</button>
                         </div>
                           </div>`
       $select.appendChild($div);
@@ -186,12 +187,12 @@ export default {
       const $select = document.querySelector('#content');
 
       const $div = document.createElement('div');
-      $div.innerHTML = `<div class="flex flex-col justify-center items-center my-20 gap-6">
+      $div.innerHTML = `<div class="flex flex-col justify-center items-center my-20 gap-6 animate-fade duration-1000 animate-ease-linear">
                         <p class="text-xl text-white font-bold">Introduce una palabra o frase para saber cuántas vocales y consonantes tiene.</p>
                         <p class="text-lg text-white font-bold">Puedes utilizar todos los caracteres, incluidos los especiales.</p>
                         <input id="inp" type="text" placeholder="Introduce una palabra o frase" class="input input-bordered input-info w-full max-w-xs" />
                         <div class="flex flex-row gap-2">
-                        <button id="btn" class="bg-sky-200 rounded-lg p-2 text-black">Aceptar</button>
+                        <button id="btn" class="bg-sky-200 rounded-lg p-2 text-black hover:animate-jump">Aceptar</button>
                         </div>
                           </div>`
       $select.appendChild($div);
@@ -212,6 +213,7 @@ export default {
     palinDromo(word) {
       let reves = "";
       let res = false;
+      word = word.toLowerCase();
       for (let i = word.length - 1; i >= 0; i--) {
         reves = reves + word[i];
       }
@@ -302,7 +304,7 @@ export default {
 
     validarLetrasYCarac(event) {
       const teclaPresionada = event.key;
-      const esLetra = /^[a-zA-ZáéíóúÁÉÍÓÚ;:.,^¨"'?¿¡!'`´=$@#~%&/()\€<>-_/s]$/.test(teclaPresionada);
+      const esLetra = /^[a-zA-ZáéíóúÁÉÍÓÚ;:.,^¨"'?¿¡!'`´=$@#~%&/()\€<>-_\s]$/.test(teclaPresionada);
       const esBorrar = (teclaPresionada === 'Backspace') || (teclaPresionada === 'Delete');
 
       if (!esLetra && !esBorrar) {
