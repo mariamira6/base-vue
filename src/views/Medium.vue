@@ -8,9 +8,9 @@
           <li><span @click="takeDice" class="hover:bg-red-800">Dados</span></li>
           <li><span @click="listNumbers" class="hover:bg-red-800">Números primos</span></li>
           <li><span @click="orderNums" class="hover:bg-red-800">Ordenar un vector</span></li>
-          <li><span class="hover:bg-red-800">Colores</span></li>
-          <li><span @click="convertBase" class="hover:bg-red-800">Base binaria</span></li>
-          <li><span class="hover:bg-red-800">Vocales-consonantes</span></li>
+          <li><span @click="changeColor" class="hover:bg-red-800">Colores</span></li>
+          <li><span @click="convertBase" class="hover:bg-red-800">Base binaria-decimal</span></li>
+          <li><span @click="numCharacters" class="hover:bg-red-800">Vocales-consonantes (Avanzado)</span></li>
         </ul>
       </div>
     </div>
@@ -45,8 +45,10 @@ export default {
       $div.innerHTML = `<div class="flex flex-col justify-center items-center my-20 gap-6">
                         <p class="text-xl text-white font-bold">Introduce el número de dados que quieres lanzar y de cuántas caras quieres que sean, y te diré el resultado de tu tirada.</p>
                         <p class="text-lg text-white font-bold">Ejemplo: Quiero tirar 2 dados de 12 caras.</p>
-                        <input id="dados" type="text" placeholder="Introduce cuántos dados quieres lanzar" class="input input-bordered border-red-500 input-info w-full max-w-xs" />
-                        <input id="caras" type="text" placeholder="Introduce el número de caras" class="input input-bordered border-red-500 input-info w-full max-w-xs" />
+                        <div class="flex flex-row gap-6">
+                        <input id="dados" type="text" placeholder="Cantidad de dados" class="input input-bordered border-red-500 input-info w-40 max-w-xs" />
+                        <input id="caras" type="text" placeholder="Número de caras" class="input input-bordered border-red-500 input-info w-40 max-w-xs" />
+                        </div>
                         <div class="flex flex-row gap-2">
                         <button id="btn" class="bg-red-300 rounded-lg p-2 text-black">Aceptar</button>
                         </div>
@@ -62,8 +64,10 @@ export default {
         }
       });
 
-      const input = document.querySelector('#caras', '#dados');
-      input.addEventListener("keydown", this.validarEntero);
+      const inputCaras = document.querySelector('#caras');
+      inputCaras.addEventListener("keydown", this.validarEntero);
+      const inputDados = document.querySelector('#dados');
+      inputDados.addEventListener("keydown", this.validarEntero);
     },
 
     listNumbers() {
@@ -74,7 +78,7 @@ export default {
       $div.innerHTML = `<div class="flex flex-col justify-center items-center my-20 gap-6">
                         <p class="text-xl text-white font-bold">Introduce un número para que te diga los primeros números primos.</p>
                         <p class="text-lg text-white font-bold">Ejemplo: Si introduces un 5, te diré los 5 primeros números primos.</p>
-                        <input id="inp" type="text" placeholder="Introduce un número." class="input input-bordered border-red-500 input-info w-full max-w-xs" />
+                        <input id="inp" type="text" placeholder="Introduce un número" class="input input-bordered border-red-500 input-info w-48 max-w-xs" />
                         <button id="btn" class="bg-red-300 rounded-lg p-2 text-black">Aceptar</button>
                         </div>
                           </div>`
@@ -101,7 +105,7 @@ export default {
       $div.innerHTML = `<div class="flex flex-col justify-center items-center my-20 gap-6">
                         <p class="text-xl text-white font-bold">Introduce una serie de números para ordenarlos de menor a mayor.</p>
                         <p class="text-lg text-white font-bold">Ejemplo: 3, 124, -34, 67, 4.</p>
-                        <input id="inp" type="text" placeholder="Introduce varios números separados por comas." class="input input-bordered border-red-500 input-info w-full max-w-xs" />
+                        <input id="inp" type="text" placeholder="Inserta números separados por comas" class="input input-bordered border-red-500 input-info w-full max-w-xs" />
                         <button id="btn" class="bg-red-300 rounded-lg p-2 text-black">Aceptar</button>
                         </div>
                           </div>`
@@ -117,13 +121,79 @@ export default {
       });
     },
 
+    changeColor() {
+      this.resetPage();
+      const $select = document.querySelector('#content');
+
+      const $div = document.createElement('div');
+      $div.innerHTML = `<div class="flex flex-col justify-center items-center my-20 gap-6">
+                        <p class="text-xl text-white font-bold">Introduce 2 cifras por cada cantidad de RGB que quieras para cambiar el color de la ventana modal.</p>
+                        <p class="text-lg text-white font-bold">Tienen que ser números del 0 al 255. Ejemplo: R (rojo) = 253; G (verde) = 53; B (azul) = 156. </p>
+                        <div class="flex flex-row gap-6">
+                        <input id="red" type="text" placeholder="Rojo" class="input input-bordered border-red-500 input-info w-24 max-w-xs" />
+                        <input id="green" type="text" placeholder="Verde" class="input input-bordered border-red-500 input-info w-24 max-w-xs" />
+                        <input id="blue" type="text" placeholder="Azul" class="input input-bordered border-red-500 input-info w-24 max-w-xs" />
+                        </div>
+                        <div class="flex flex-row gap-2">
+                        <button id="btn" class="bg-red-300 rounded-lg p-2 text-black">Aceptar</button>
+                        </div>
+                          </div>`
+      $select.appendChild($div);
+      const btnColor = document.querySelector("#btn");
+      btnColor.addEventListener("click", () => {
+        if (red.value.trim() == "" || green.value.trim() || blue.value.trim()) {
+          respBack("Error", "Hay algún campo vacío. Introduce los datos.", "error", "Aceptar", "#7d121261", "#840d0d")
+        }
+
+        if (red.value >= 0 && red.value <= 255 && green.value >= 0 && green.value <= 255 && blue.value >= 0 && blue.value <= 255) {
+          let res = this.chooseColor(red.value, green.value, blue.value);
+          respBack("Color cambiado", `El color elegido ha sido ${res}`, "success", "Aceptar", `${res}`, `${res}`)
+        } else {
+          respBack("Número erróneo", "Tiene que ser un número entre el 0 y el 255", "error", "Aceptar", "#7d121261", "#840d0d")
+        }
+      });
+
+      const inputRed = document.querySelector('#red'); {
+        inputRed.addEventListener("keydown", this.validarEntero);
+      }
+      const inputGreen = document.querySelector('#red'); {
+        inputGreen.addEventListener("keydown", this.validarEntero);
+      }
+      const inputBlue = document.querySelector('#red'); {
+        inputBlue.addEventListener("keydown", this.validarEntero);
+      }
+    },
+
+    numCharacters() {
+      this.resetPage();
+      const $select = document.querySelector('#content');
+
+      const $div = document.createElement('div');
+      $div.innerHTML = `<div class="flex flex-col justify-center items-center my-20 gap-6">
+                        <p class="text-xl text-white font-bold">Introduce una palabra o frase y te diré qué caracteres tiene y su cantidad.</p>
+                        <input id="inp" type="text" placeholder="Inserta palabra o frase" class="input input-bordered border-red-500 input-info w-full max-w-xs" />
+                        <button id="btn" class="bg-red-300 rounded-lg p-2 text-black">Aceptar</button>
+                        </div>
+                          </div>`
+      $select.appendChild($div);
+      const btnCharacter = document.querySelector("#btn");
+      btnCharacter.addEventListener("click", () => {
+        if (inp.value.trim() == "") {
+          respBack("Error", "El campo está vacío. Introduce los datos.", "error", "Aceptar", "#7d121261", "#840d0d")
+        } else {
+          let res = this.countCharacters(inp.value);
+          respBack(`Tu palabra o frase "${inp.value}" tiene...`, `${res}`, "success", "Aceptar", "#7d121261", "#840d0d")
+        }
+      });
+    },
+
     convertBase() {
       this.resetPage();
       const $select = document.querySelector('#content');
       const $div = document.createElement('div');
       $div.innerHTML = `<div class="flex flex-col justify-center items-center my-20 gap-6">
                         <p class="text-xl text-white font-bold">Introduce un número e indica si quieres convertirlo de base binaria a decimal o viceversa.</p>
-                        <input id="inp" type="text" placeholder="Introduce un número" class="input input-bordered input-info w-full max-w-xs" />
+                        <input id="inp" type="text" placeholder="Introduce un número" class="input input-bordered input-info w-48 max-w-xs" />
                         <div class="flex flex-row gap-2">
                         <button id="binaria" class="bg-sky-200 rounded-lg p-2 text-black">Convertir a Base Binaria</button>
                         <button id="decimal" class="bg-sky-200 rounded-lg p-2 text-black">Convertir a Base Decimal</button>
@@ -199,17 +269,16 @@ export default {
       for (let i = number.length - 1; i >= 0; i--) {
         res = res + (number[i] * (base ** ((number.length - 1) - i)))
       }
-      return res;
+      return res
     },
 
     decToBin(num, base) {
       let res = [];
-      while (num > base) {
-        res.push(Math.floor(num % base));
-        num = num / base;
+      while (num >= base) {
+        res.push(num % base);
+        num = parseInt(num) / parseInt(base);
       }
-      res.push(Math.floor(num));
-      console.log(res);
+      res.push(num);
       res.reverse()
       return res.join('');
     },
@@ -229,6 +298,27 @@ export default {
       return splitNumbers
     },
 
+    chooseColor(R, G, B) {
+      return `rgb(${R}, ${G}, ${B})`
+    },
+
+    countCharacters(text) {
+      let res = [];
+      for (let i = 0; i < text.length; i++) {
+        let aux = false;
+        for (let j = 0; j < res.length; j++) {
+          if (res[j].letter == text[i]) {
+            res[j].quantity++;
+            aux = true;
+          }
+        }
+        if (aux == false) {
+          res.push({ letter: `${text[i]}`, quantity: 1 })
+        }
+      }
+      return res;
+    },
+
     validarLetras(event) {
       const teclaPresionada = event.key;
       const esLetra = /^[a-zA-ZáéíóúÁÉÍÓÚ\s]$/.test(teclaPresionada);
@@ -239,13 +329,23 @@ export default {
       }
     },
 
-    validarNums(event) {
+    validarEntero(event) {
       const teclaPresionada = event.key;
-      const esNum = /^\d+(\.\d+)?$/.test(teclaPresionada) || /^\d+(\,\d+)?$/.test(teclaPresionada);
+      const esNumero = /^[0-9]$/.test(teclaPresionada);
       const esBorrar = (teclaPresionada === 'Backspace') || (teclaPresionada === 'Delete');
 
-      if (!esNum && !esBorrar) {
-        if (!esNum && !esBorrar) {
+      if (!esNumero && !esBorrar) {
+        event.preventDefault();
+      }
+    },
+
+    validarRGB(event) {
+      const teclaPresionada = event.key;
+      const esRGB = /^([0-9]{1,3})$/.test(teclaPresionada);
+      const esBorrar = (teclaPresionada === 'Backspace') || (teclaPresionada === 'Delete');
+
+      if (!esRGB && !esBorrar) {
+        if (!esRGB && !esBorrar) {
           event.preventDefault();
         }
       }

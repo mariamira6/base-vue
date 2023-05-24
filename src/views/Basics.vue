@@ -155,7 +155,7 @@ export default {
       });
 
       const input = document.querySelector('#inp');
-      input.addEventListener("keydown", this.validarNums);
+      input.addEventListener("keydown", this.validarDecimal);
     },
 
     showNumbers() {
@@ -206,7 +206,7 @@ export default {
       });
 
       const input = document.querySelector('#inp');
-      input.addEventListener("keydown", this.validarLetras);
+      input.addEventListener("keydown", this.validarLetrasYCarac);
     },
 
     palinDromo(word) {
@@ -280,9 +280,29 @@ export default {
       }
     },
 
+    validarDecimal(event) {
+      const teclaPresionada = event.key;
+      const esNumero = /^[0-9\.]$/.test(teclaPresionada);
+      const esBorrar = (teclaPresionada === 'Backspace') || (teclaPresionada === 'Delete');
+
+      if (!esNumero && !esBorrar) {
+        event.preventDefault();
+      }
+    },
+
     validarLetras(event) {
       const teclaPresionada = event.key;
       const esLetra = /^[a-zA-ZáéíóúÁÉÍÓÚ\s]$/.test(teclaPresionada);
+      const esBorrar = (teclaPresionada === 'Backspace') || (teclaPresionada === 'Delete');
+
+      if (!esLetra && !esBorrar) {
+        event.preventDefault();
+      }
+    },
+
+    validarLetrasYCarac(event) {
+      const teclaPresionada = event.key;
+      const esLetra = /^[a-zA-ZáéíóúÁÉÍÓÚ;:.,^¨"'?¿¡!'`´=$@#~%&/()\€<>-_/s]$/.test(teclaPresionada);
       const esBorrar = (teclaPresionada === 'Backspace') || (teclaPresionada === 'Delete');
 
       if (!esLetra && !esBorrar) {
