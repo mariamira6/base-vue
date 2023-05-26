@@ -41,8 +41,8 @@ export default {
       this.resetPage();
       const $select = document.querySelector('#content');
       const $div = document.createElement('div');
-      $div.innerHTML = `<div class="flex flex-col justify-center items-center my-20 gap-6 animate-fade duration-1000 animate-ease-linear">
-                        <p class="text-xl text-white font-bold">Introduce una cantidad de minutos (por ejemplo, 1578) y se transformarán en segundos.</p>
+      $div.innerHTML = `<div class="flex flex-col justify-center items-center mx-12 my-20 gap-6 animate-fade duration-1000 animate-ease-linear">
+                        <p class="text-white font-bold text-center text-s md:text-xl lg:text-xl">Introduce una cantidad de minutos (por ejemplo, 1578) y se transformarán en segundos.</p>
                         <input id="inp" type="text" placeholder="Introduce una cantidad" class="input input-bordered input-info w-52 max-w-xs" />
                         <div class="flex flex-row gap-2">
                         <button id="btn" class="bg-sky-200 rounded-lg p-2 text-black hover:animate-jump">Aceptar</button>
@@ -69,9 +69,9 @@ export default {
       const $select = document.querySelector('#content');
 
       const $div = document.createElement('div');
-      $div.innerHTML = `<div class="flex flex-col justify-center items-center my-20 gap-6 animate-fade duration-1000 animate-ease-linear">
-                        <p class="text-xl text-white font-bold">Introduce una palabra o frase y te diré si es un palíndromo o no.</p>
-                        <p class="text-lg text-white font-bold">Por ejemplo: Kayak, Luz azul, Somos, etc. </p>
+      $div.innerHTML = `<div class="flex flex-col justify-center items-center mx-12 my-20 gap-6 animate-fade duration-1000 animate-ease-linear">
+                        <p class="text-white font-bold text-center text-s md:text-xl lg:text-xl">Introduce una palabra o frase y te diré si es un palíndromo o no.</p>
+                        <p class="text-white font-bold text-center text-s md:text-lg lg:text-lg">Por ejemplo: Kayak, Luz azul, Somos, etc. </p>
                         <input id="inp" type="text" placeholder="Introduce una palabra o frase" class="input input-bordered input-info w-64 max-w-xs" />
                         <div class="flex flex-row gap-2">
                         <button id="btn" class="bg-sky-200 rounded-lg p-2 text-black hover:animate-jump">Aceptar</button>
@@ -100,8 +100,8 @@ export default {
       this.resetPage();
       const $select = document.querySelector('#content');
       const $div = document.createElement('div');
-      $div.innerHTML = `<div class="flex flex-col justify-center items-center my-20 gap-6 animate-fade duration-1000 animate-ease-linear">
-                        <p class="text-xl text-white font-bold">Introduce un número y te daré otro aleatorio entre 1 y tu número elegido.</p>
+      $div.innerHTML = `<div class="flex flex-col justify-center items-center mx-12 my-20 gap-6 animate-fade duration-1000 animate-ease-linear">
+                        <p class="text-white font-bold text-center text-s md:text-xl lg:text-xl">Introduce un número y te daré otro aleatorio entre 1 y tu número elegido.</p>
                         <input id="inp" type="text" placeholder="Introduce un número" class="input input-bordered input-info w-48 max-w-xs" />
                         <div class="flex flex-row gap-2">
                         <button id="btn" class="bg-sky-200 rounded-lg p-2 text-black hover:animate-jump">Aceptar</button>
@@ -126,8 +126,8 @@ export default {
       this.resetPage();
       const $select = document.querySelector('#content');
       const $div = document.createElement('div');
-      $div.innerHTML = `<div class="flex flex-col justify-center items-center my-20 gap-6 animate-fade duration-1000 animate-ease-linear">
-                        <p class="text-xl text-white font-bold">Introduce un número e indica si quieres transformarlo de ºC  a Fahrenheit o viceversa.</p>
+      $div.innerHTML = `<div class="flex flex-col justify-center items-center mx-12 my-20 gap-6 animate-fade duration-1000 animate-ease-linear">
+                        <p class="text-white font-bold text-center text-s md:text-xl lg:text-xl">Introduce un número e indica si quieres transformarlo de ºC  a Fahrenheit o viceversa.</p>
                         <input id="inp" type="text" placeholder="Introduce un número" class="input input-bordered input-info w-48 max-w-xs" />
                         <div class="flex flex-row gap-2">
                         <button id="celsius" class="bg-sky-200 rounded-lg p-2 text-black hover:animate-jump">Transformar a ºC</button>
@@ -163,8 +163,8 @@ export default {
       this.resetPage();
       const $select = document.querySelector('#content');
       const $div = document.createElement('div');
-      $div.innerHTML = `<div class="flex flex-col justify-center items-center my-20 gap-6 animate-fade duration-1000 animate-ease-linear">
-                        <p class="text-xl text-white font-bold">Introduce una serie de números y te diré cuál es el menor y el mayor.</p>
+      $div.innerHTML = `<div class="flex flex-col justify-center items-center mx-12 my-20 gap-6 animate-fade duration-1000 animate-ease-linear">
+                        <p class="text-white font-bold text-center text-s md:text-xl lg:text-xl">Introduce una serie de números y te diré cuál es el menor y el mayor.</p>
                         <input id="inp" type="text" placeholder="Introduce una serie de números" class="input input-bordered input-info w-full max-w-xs" />
                         <div class="flex flex-row gap-2">
                         <button id="btn" class="bg-sky-200 rounded-lg p-2 text-black hover:animate-jump">Aceptar</button>
@@ -187,9 +187,9 @@ export default {
       const $select = document.querySelector('#content');
 
       const $div = document.createElement('div');
-      $div.innerHTML = `<div class="flex flex-col justify-center items-center my-20 gap-6 animate-fade duration-1000 animate-ease-linear">
-                        <p class="text-xl text-white font-bold">Introduce una palabra o frase para saber cuántas vocales y consonantes tiene.</p>
-                        <p class="text-lg text-white font-bold">Puedes utilizar todos los caracteres, incluidos los especiales.</p>
+      $div.innerHTML = `<div class="flex flex-col justify-center items-center mx-12 my-20 gap-6 animate-fade duration-1000 animate-ease-linear">
+                        <p class="text-white font-bold text-center text-s md:text-xl lg:text-xl">Introduce una palabra o frase para saber cuántas vocales y consonantes tiene.</p>
+                        <p class="text-white font-bold text-center text-s md:text-lg lg:text-lg">Puedes utilizar todos los caracteres, incluidos los especiales.</p>
                         <input id="inp" type="text" placeholder="Introduce una palabra o frase" class="input input-bordered input-info w-full max-w-xs" />
                         <div class="flex flex-row gap-2">
                         <button id="btn" class="bg-sky-200 rounded-lg p-2 text-black hover:animate-jump">Aceptar</button>
