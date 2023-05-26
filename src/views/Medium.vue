@@ -42,9 +42,9 @@ export default {
       const $select = document.querySelector('#content');
 
       const $div = document.createElement('div');
-      $div.innerHTML = `<div class="flex flex-col justify-center items-center my-20 gap-6 animate-fade duration-1000 animate-ease-linear">
-                        <p class="text-xl text-white font-bold">Introduce el número de dados que quieres lanzar y de cuántas caras quieres que sean, y te diré el resultado de tu tirada.</p>
-                        <p class="text-lg text-white font-bold">Ejemplo: Quiero tirar 2 dados de 12 caras.</p>
+      $div.innerHTML = `<div class="flex flex-col justify-center items-center mx-12 my-20 gap-6 animate-fade duration-1000 animate-ease-linear">
+                        <p class="text-white font-bold text-center text-s md:text-xl lg:text-xl">Introduce el número de dados que quieres lanzar y de cuántas caras quieres que sean, y te diré el resultado de tu tirada.</p>
+                        <p class="text-white font-bold text-center text-s md:text-lg lg:text-lg">Ejemplo: Quiero tirar 2 dados de 12 caras.</p>
                         <div class="flex flex-row gap-6">
                         <input id="dados" type="text" placeholder="Cantidad de dados" class="input input-bordered border-red-500 input-info w-40 max-w-xs" />
                         <input id="caras" type="text" placeholder="Número de caras" class="input input-bordered border-red-500 input-info w-40 max-w-xs" />
@@ -75,9 +75,9 @@ export default {
       const $select = document.querySelector('#content');
 
       const $div = document.createElement('div');
-      $div.innerHTML = `<div class="flex flex-col justify-center items-center my-20 gap-6 animate-fade duration-1000 animate-ease-linear">
-                        <p class="text-xl text-white font-bold">Introduce un número para que te diga los primeros números primos.</p>
-                        <p class="text-lg text-white font-bold">Ejemplo: Si introduces un 5, te diré los 5 primeros números primos.</p>
+      $div.innerHTML = `<div class="flex flex-col justify-center items-center mx-12 my-20 gap-6 animate-fade duration-1000 animate-ease-linear">
+                        <p class="text-white font-bold text-center text-s md:text-xl lg:text-xl">Introduce un número para que te diga los primeros números primos.</p>
+                        <p class="text-white font-bold text-center text-s md:text-lg lg:text-lg">Ejemplo: Si introduces un 5, te diré los 5 primeros números primos.</p>
                         <input id="inp" type="text" placeholder="Introduce un número" class="input input-bordered border-red-500 input-info w-48 max-w-xs" />
                         <button id="btn" class="bg-red-300 rounded-lg p-2 text-black hover:animate-jump">Aceptar</button>
                         </div>
@@ -102,9 +102,9 @@ export default {
       const $select = document.querySelector('#content');
 
       const $div = document.createElement('div');
-      $div.innerHTML = `<div class="flex flex-col justify-center items-center my-20 gap-6 animate-fade duration-1000 animate-ease-linear">
-                        <p class="text-xl text-white font-bold">Introduce una serie de números para ordenarlos de menor a mayor.</p>
-                        <p class="text-lg text-white font-bold">Ejemplo: 3, 124, -34, 67, 4.</p>
+      $div.innerHTML = `<div class="flex flex-col justify-center items-center mx-12 my-20 gap-6 animate-fade duration-1000 animate-ease-linear">
+                        <p class="text-white font-bold text-center text-s md:text-xl lg:text-xl">Introduce una serie de números para ordenarlos de menor a mayor.</p>
+                        <p class="text-white font-bold text-center text-s md:text-lg lg:text-lg">Ejemplo: 3, 124, -34, 67, 4.</p>
                         <input id="inp" type="text" placeholder="Inserta números separados por comas" class="input input-bordered border-red-500 input-info w-full max-w-xs" />
                         <button id="btn" class="bg-red-300 rounded-lg p-2 text-black hover:animate-jump">Aceptar</button>
                         </div>
@@ -126,9 +126,9 @@ export default {
       const $select = document.querySelector('#content');
 
       const $div = document.createElement('div');
-      $div.innerHTML = `<div class="flex flex-col justify-center items-center my-20 gap-6 animate-fade duration-1000 animate-ease-linear">
-                        <p class="text-xl text-white font-bold">Introduce 2 cifras por cada cantidad de RGB que quieras para cambiar el color de fondo y ventana modal.</p>
-                        <p class="text-lg text-white font-bold">Tienen que ser números del 0 al 255. Ejemplo: R (rojo) = 253; G (verde) = 53; B (azul) = 156. </p>
+      $div.innerHTML = `<div class="flex flex-col justify-center items-center mx-12 my-20 gap-6 animate-fade duration-1000 animate-ease-linear">
+                        <p class="text-white font-bold text-center text-s md:text-xl lg:text-xl">Introduce 2 cifras por cada cantidad de RGB que quieras para cambiar el color de fondo y ventana modal.</p>
+                        <p class="text-white font-bold text-center text-s md:text-lg lg:text-lg">Tienen que ser números del 0 al 255. Ejemplo: R (rojo) = 253; G (verde) = 53; B (azul) = 156. </p>
                         <div class="flex flex-row gap-6">
                         <input id="red" type="text" placeholder="Rojo" class="input input-bordered border-red-500 input-info w-24 max-w-xs" />
                         <input id="green" type="text" placeholder="Verde" class="input input-bordered border-red-500 input-info w-24 max-w-xs" />
@@ -169,8 +169,8 @@ export default {
       const $select = document.querySelector('#content');
 
       const $div = document.createElement('div');
-      $div.innerHTML = `<div class="flex flex-col justify-center items-center my-20 gap-6 animate-fade duration-1000 animate-ease-linear">
-                        <p class="text-xl text-white font-bold">Introduce una palabra o frase y te diré qué caracteres tiene y su cantidad.</p>
+      $div.innerHTML = `<div class="flex flex-col justify-center items-center mx-12 my-20 gap-6 animate-fade duration-1000 animate-ease-linear">
+                        <p class="text-white font-bold text-center text-s md:text-xl lg:text-xl">Introduce una palabra o frase y te diré qué caracteres tiene y su cantidad.</p>
                         <input id="inp" type="text" placeholder="Inserta palabra o frase" class="input input-bordered border-red-500 input-info w-full max-w-xs" />
                         <button id="btn" class="bg-red-300 rounded-lg p-2 text-black hover:animate-jump">Aceptar</button>
                         </div>
@@ -191,8 +191,8 @@ export default {
       this.resetPage();
       const $select = document.querySelector('#content');
       const $div = document.createElement('div');
-      $div.innerHTML = `<div class="flex flex-col justify-center items-center my-20 gap-6 animate-fade duration-1000 animate-ease-linear">
-                        <p class="text-xl text-white font-bold">Introduce un número e indica si quieres convertirlo de base binaria a decimal o viceversa.</p>
+      $div.innerHTML = `<div class="flex flex-col justify-center items-center mx-12 my-20 gap-6 animate-fade duration-1000 animate-ease-linear">
+                        <p class="text-white font-bold text-center text-s md:text-xl lg:text-xl">Introduce un número e indica si quieres convertirlo de base binaria a decimal o viceversa.</p>
                         <input id="inp" type="text" placeholder="Introduce un número" class="input input-bordered input-info w-48 max-w-xs" />
                         <div class="flex flex-row gap-2">
                         <button id="binaria" class="bg-sky-200 rounded-lg p-2 text-black hover:animate-jump">Convertir a Base Binaria</button>
