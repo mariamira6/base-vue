@@ -321,7 +321,7 @@ export default {
       }
       let res = "";
       for (let k = 0; k < obj.length; k++) {
-        res += `"${obj[k].character}" = ${obj[k].quantity}`
+        res += `"${obj[k].character}" = ${obj[k].quantity}, `
       }
       res = res.substring(0, res.length - 2);
       return res
