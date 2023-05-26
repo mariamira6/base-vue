@@ -1,6 +1,7 @@
 <template>
-  <div class="bg-[url('/./assets/img/bg1.jpg')] w-full min-h-screen bg-cover bg-bottom m-0 p-0">
-    <div class="flex justify-center items-center gap-20">
+  <div
+    class="bg-[url('/./assets/img/bg1.jpg')] w-full min-h-screen bg-cover flex items-center justify-center bg-bottom m-0 p-0">
+    <div class="flex flex-row gap-40">
       <Card v-for="item in level" :key="item" :name="item.name" :img="item.img" :property="item.property" :btn="item.btn"
         :url="item.url" />
     </div>

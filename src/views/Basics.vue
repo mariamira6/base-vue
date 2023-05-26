@@ -11,7 +11,7 @@
           <li><span @click="showRandomNumber" class="hover:bg-sky-800">Número aleatorio</span></li>
           <li><span @click="convertTemp" class="hover:bg-sky-800">Convertir temperatura</span></li>
           <li><span @click="showNumbers" class="hover:bg-sky-800">Mayor-menor</span></li>
-          <li><span @click="howMany" class="hover:bg-sky-800">Vocales-consonantes</span></li>
+          <li><span @click="wordsQuantity" class="hover:bg-sky-800">Vocales-consonantes</span></li>
         </ul>
       </div>
     </div>
@@ -70,9 +70,9 @@ export default {
 
       const $div = document.createElement('div');
       $div.innerHTML = `<div class="flex flex-col justify-center items-center my-20 gap-6 animate-fade duration-1000 animate-ease-linear">
-                        <p class="text-xl text-white font-bold">Introduce una palabra y te diré si es un palíndromo o no.</p>
-                        <p class="text-lg text-white font-bold">Por ejemplo: Kayak, Oro, Pop, Radar, etc. </p>
-                        <input id="inp" type="text" placeholder="Introduce una palabra" class="input input-bordered input-info w-64 max-w-xs" />
+                        <p class="text-xl text-white font-bold">Introduce una palabra o frase y te diré si es un palíndromo o no.</p>
+                        <p class="text-lg text-white font-bold">Por ejemplo: Kayak, Luz azul, Somos, etc. </p>
+                        <input id="inp" type="text" placeholder="Introduce una palabra o frase" class="input input-bordered input-info w-64 max-w-xs" />
                         <div class="flex flex-row gap-2">
                         <button id="btn" class="bg-sky-200 rounded-lg p-2 text-black hover:animate-jump">Aceptar</button>
                         </div>
@@ -93,7 +93,7 @@ export default {
       });
 
       const input = document.querySelector('#inp');
-      input.addEventListener("keydown", this.validarLetras);
+      input.addEventListener("keydown", this.validarLetrasYCarac);
     },
 
     showRandomNumber() {
@@ -182,7 +182,7 @@ export default {
       });
     },
 
-    howMany() {
+    wordsQuantity() {
       this.resetPage();
       const $select = document.querySelector('#content');
 
@@ -196,8 +196,8 @@ export default {
                         </div>
                           </div>`
       $select.appendChild($div);
-      const btnShow = document.querySelector("#btn");
-      btnShow.addEventListener("click", () => {
+      const btnLetters = document.querySelector("#btn");
+      btnLetters.addEventListener("click", () => {
         if (inp.value.trim() == "") {
           respBack("Error", "El campo está vacío. Introduce los datos.", "error", "Aceptar", "#546df758", "#4669f6")
         } else {
@@ -214,6 +214,7 @@ export default {
       let reves = "";
       let res = false;
       word = word.toLowerCase();
+      word = word.replaceAll("á", "a").replaceAll("é", "e").replaceAll("í", "i").replaceAll("ó", "o").replaceAll("ú", "u").replaceAll("ü", "u").replaceAll(/[^\w/s]/g, "");
       for (let i = word.length - 1; i >= 0; i--) {
         reves = reves + word[i];
       }
@@ -312,17 +313,6 @@ export default {
       }
     },
 
-    validarNums(event) {
-      const teclaPresionada = event.key;
-      const esNum = /^\d+(\.\d+)?$/.test(teclaPresionada) || /^\d+(\,\d+)?$/.test(teclaPresionada);
-      const esBorrar = (teclaPresionada === 'Backspace') || (teclaPresionada === 'Delete');
-
-      if (!esNum && !esBorrar) {
-        if (!esNum && !esBorrar) {
-          event.preventDefault();
-        }
-      }
-    },
 
     resetPage() {
       document.querySelector("#content").innerHTML = "";

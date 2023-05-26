@@ -1,5 +1,5 @@
 <template>
-  <div class="card w-80 flex justify-center my-20 animate-fade animate-duration-1000 animate-ease-in">
+  <div class="card w-80 animate-fade animate-duration-1000 animate-ease-in">
     <figure><img class="w-full h-72" :src="img" alt="Nivel fácil" /></figure>
     <div :class="property">
       <h2 class="card-title text-white">{{ name }}</h2>

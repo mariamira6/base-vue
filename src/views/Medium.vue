@@ -182,7 +182,7 @@ export default {
           respBack("Error", "El campo está vacío. Introduce los datos.", "error", "Aceptar", "#7d121261", "#840d0d")
         } else {
           let res = this.countCharacters(inp.value);
-          respBack(`Tu palabra/frase "${inp.value}" tiene...`, `${JSON.stringify(res)}`, "success", "Aceptar", "#7d121261", "#840d0d")
+          respBack(`Tu palabra/frase "${inp.value}" tiene...`, `${res}`, "success", "Aceptar", "#7d121261", "#840d0d")
         }
       });
     },
@@ -303,23 +303,28 @@ export default {
     },
 
     countCharacters(text) {
-      let res = [];
+      let obj = [];
       for (let i = 0; i < text.length; i++) {
         let aux = false;
-        for (let j = 0; j < res.length; j++) {
-          if (res[j].character == text[i]) {
-            res[j].quantity++;
+        for (let j = 0; j < obj.length; j++) {
+          if (obj[j].character == text[i]) {
+            obj[j].quantity++;
             aux = true;
           }
         }
         if (aux == false) {
-          res.push({
+          obj.push({
             character: `${text[i]}`,
             quantity: 1
           })
         }
       }
-      return res;
+      let res = "";
+      for (let k = 0; k < obj.length; k++) {
+        res = res + `"${obj[k].character}" = ${obj[k].quantity}, `
+      }
+      res = res.substring(0, res.length - 2);
+      return res
     },
 
     validarLetras(event) {
@@ -342,17 +347,6 @@ export default {
       }
     },
 
-    validarRGB(event) {
-      const teclaPresionada = event.key;
-      const esRGB = /^([0-9]{1,3})$/.test(teclaPresionada);
-      const esBorrar = (teclaPresionada === 'Backspace') || (teclaPresionada === 'Delete');
-
-      if (!esRGB && !esBorrar) {
-        if (!esRGB && !esBorrar) {
-          event.preventDefault();
-        }
-      }
-    },
 
     resetPage() {
       document.querySelector("#content").innerHTML = "";
