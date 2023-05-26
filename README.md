@@ -11,4 +11,4 @@
 
 <a href="https://tailwindcss.com/" target="_blank" rel="noreferrer"> <img align="center" src="https://www.vectorlogo.zone/logos/tailwindcss/tailwindcss-icon.svg" alt="tailwind" width="30" height="30"/> </a>
 
-<p>TailwindCSS para aplicar los estilos.</p>
+<p>TailwindCSS para aplicar los estilos + Responsive.</p>
