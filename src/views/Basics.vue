@@ -2,10 +2,11 @@
   <body class="bg-[url('/./assets/img/bg13.jpg')] bg-cover w-full min-h-screen m-0 p-0">
     <Breadcrumbs v-for="item in bc" :key="item" :name="item.name" :hover="item.hover" />
     <div class="flex justify-center items-center mt-5">
-      <div class="dropdown dropdown-hover">
+      <div class="dropdown" @click="showOptions">
         <label tabindex="0" class="btn bg-sky-500 text-white hover:bg-sky-800 m-1">Elige uno de los
           ejercicios</label>
-        <ul tabindex="0" class="dropdown-content menu p-2 shadow bg-sky-500 text-white rounded-box w-64">
+        <ul tabindex="0" class="dropdown-content menu p-2 shadow bg-sky-500 text-white rounded-box w-64"
+          :class="{ 'hidden': !openMenu }">
           <li><span @click="showWord" class="hover:bg-sky-800">Palíndromos</span></li>
           <li><span @click="showSeconds" class="hover:bg-sky-800">Minutos-segundos</span></li>
           <li><span @click="showRandomNumber" class="hover:bg-sky-800">Número aleatorio</span></li>
@@ -32,11 +33,16 @@ export default {
           name: "Nivel fácil",
           hover: "hover:text-blue-300"
         }
-      ]
+      ],
+      openMenu: false,
     }
   },
 
   methods: {
+    showOptions() {
+      this.openMenu = !this.openMenu;
+    },
+
     showSeconds() {
       this.resetPage();
       const $select = document.querySelector('#content');
@@ -139,6 +145,8 @@ export default {
       btnC.addEventListener("click", () => {
         if (inp.value.trim() == "") {
           respBack("Error", "El campo está vacío. Introduce los datos.", "error", "Aceptar", "#546df758", "#4669f6")
+        } else if (this.validateSerieInteger(input.value) == false) {
+          respBack("Error", "Introduce un número.", "error", "Aceptar", "#546df758", "#4669f6")
         } else {
           let res = this.toCelsius(inp.value);
           respBack("¡Temperatura transformada!", `${inp.value} ºF = ${res}`, "success", "Aceptar", "#546df758", "#4669f6")
@@ -149,6 +157,8 @@ export default {
       btnF.addEventListener("click", () => {
         if (inp.value.trim() == "") {
           respBack("Error", "El campo está vacío. Introduce los datos.", "error", "Aceptar", "#546df758", "#4669f6")
+        } else if (this.validateSerieInteger(input.value) == false) {
+          respBack("Error", "Introduce un número.", "error", "Aceptar", "#546df758", "#4669f6")
         } else {
           let res = this.toFahrenheit(inp.value)
           respBack("¡Temperatura transformada!", `${inp.value} ºC = ${res}`, "success", "Aceptar", "#546df758", "#4669f6")
@@ -165,6 +175,7 @@ export default {
       const $div = document.createElement('div');
       $div.innerHTML = `<div class="flex flex-col justify-center items-center mx-12 my-20 gap-6 animate-fade duration-1000 animate-ease-linear">
                         <p class="text-white font-bold text-center text-s sm:text-s md:text-xl lg:text-xl">Introduce una serie de números y te diré cuál es el menor y el mayor.</p>
+                        <p class="text-white font-bold text-center text-s sm:text-s md:text-lg lg:text-lg">Por ejemplo: 12, -6, 8, 59, 0 </p>
                         <input id="inp" type="text" placeholder="Introduce una serie de números" class="input input-bordered input-info w-full max-w-xs" />
                         <div class="flex flex-row gap-2">
                         <button id="btn" class="bg-sky-200 rounded-lg p-2 text-black hover:animate-jump">Aceptar</button>
@@ -175,12 +186,18 @@ export default {
       btnNum.addEventListener("click", () => {
         if (inp.value.trim() == "") {
           respBack("Error", "El campo está vacío. Introduce los datos.", "error", "Aceptar", "#546df758", "#4669f6")
+        } else if (this.validateSerieInteger(input.value) == false) {
+          respBack("Error", "Tienes que introducir una serie de números separados por comas: 4, 24, -12, 34, etc.", "error", "Aceptar", "#546df758", "#4669f6")
         } else {
           let res = this.returnNumbers(inp.value);
           respBack(`Has introducido ${inp.value} y...`, `¡Tachán! ${res.min} es el número más pequeño y ${res.max} el más grande`, "success", "Aceptar", "#546df758", "#4669f6")
         }
       });
+
+      const input = document.querySelector('#inp');
+      input.addEventListener("keydown", this.validarSerie);
     },
+
 
     wordsQuantity() {
       this.resetPage();
@@ -273,46 +290,66 @@ export default {
       return { vocals, consonants }
     },
 
-    validarEntero(event) {
-      const teclaPresionada = event.key;
-      const esNumero = /^[0-9]$/.test(teclaPresionada);
-      const esBorrar = (teclaPresionada === 'Backspace') || (teclaPresionada === 'Delete');
+    validarEntero(tecla) {
+      const teclaPresionada = tecla.key;
+      const numEntero = /^[0-9]$/.test(teclaPresionada);
+      const deleteNum = (teclaPresionada === 'Backspace') || (teclaPresionada === 'Delete');
 
-      if (!esNumero && !esBorrar) {
-        event.preventDefault();
+      if (!numEntero && !deleteNum) {
+        tecla.preventDefault();
       }
     },
 
-    validarDecimal(event) {
-      const teclaPresionada = event.key;
-      const esNumero = /^[0-9\.]$/.test(teclaPresionada);
-      const esBorrar = (teclaPresionada === 'Backspace') || (teclaPresionada === 'Delete');
+    validarDecimal(tecla) {
+      const teclaPresionada = tecla.key;
+      const numDecimal = /^[0-9\.]$/.test(teclaPresionada);
+      const deleteNum = (teclaPresionada === 'Backspace') || (teclaPresionada === 'Delete');
 
-      if (!esNumero && !esBorrar) {
-        event.preventDefault();
+      if (!numDecimal && !deleteNum) {
+        tecla.preventDefault();
       }
     },
 
-    validarLetras(event) {
-      const teclaPresionada = event.key;
-      const esLetra = /^[a-zA-ZáéíóúÁÉÍÓÚ\s]$/.test(teclaPresionada);
-      const esBorrar = (teclaPresionada === 'Backspace') || (teclaPresionada === 'Delete');
+    validarSerie(tecla) {
+      const teclaPresionada = tecla.key;
+      const numDecimal = /^[0-9\,\-\s]$/.test(teclaPresionada);
+      const deleteNum = (teclaPresionada === 'Backspace') || (teclaPresionada === 'Delete');
 
-      if (!esLetra && !esBorrar) {
-        event.preventDefault();
+      if (!numDecimal && !deleteNum) {
+        tecla.preventDefault();
       }
     },
 
-    validarLetrasYCarac(event) {
-      const teclaPresionada = event.key;
-      const esLetra = /^[a-zA-ZáéíóúÁÉÍÓÚ;:.,^¨"'?¿¡!'`´=$@#~%&/()\€<>-_\s]$/.test(teclaPresionada);
-      const esBorrar = (teclaPresionada === 'Backspace') || (teclaPresionada === 'Delete');
+    validarLetras(tecla) {
+      const teclaPresionada = tecla.key;
+      const letter = /^[a-zA-ZáéíóúÁÉÍÓÚ\s]$/.test(teclaPresionada);
+      const deleteLetter = (teclaPresionada === 'Backspace') || (teclaPresionada === 'Delete');
 
-      if (!esLetra && !esBorrar) {
-        event.preventDefault();
+      if (!letter && !deleteLetter) {
+        tecla.preventDefault();
       }
     },
 
+    validarLetrasYCarac(tecla) {
+      const teclaPresionada = event.key;
+      const character = /^[a-zA-ZáéíóúÁÉÍÓÚ;:.,^¨"'?¿¡!'`´=$@#~%&/()\€<>-_\s]$/.test(teclaPresionada);
+      const deleteLetter = (teclaPresionada === 'Backspace') || (teclaPresionada === 'Delete');
+
+      if (!character && !deleteLetter) {
+        tecla.preventDefault();
+      }
+    },
+
+    validateSerieInteger(text) {
+      let aux = true;
+      let res = text.split(",");
+      for (let i = 0; i < res.length && aux; i++) {
+        if (isNaN(parseInt(res[i].trim())) || res[i].trim() == "") {
+          aux = false;
+        }
+      }
+      return aux;
+    },
 
     resetPage() {
       document.querySelector("#content").innerHTML = "";
